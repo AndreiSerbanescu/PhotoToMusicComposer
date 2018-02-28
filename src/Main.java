@@ -1,4 +1,6 @@
-import java.awt.*;
+import clustering.Clusterer;
+import utils.ImageUtils;
+
 import java.awt.image.*;
 
 
@@ -8,13 +10,8 @@ public class Main {
 
     BufferedImage img = ImageUtils.loadImage("./src/image.jpg");
 
-    for (int i = 0; i < img.getHeight(); i++) {
-      for (int j = 0; j < img.getWidth(); j++) {
-        img.setRGB(j, i, img.getRGB(j, i) * 2);
-      }
-    }
-
-    ImageUtils.saveImage(img);
+    Clusterer clusterer = new Clusterer(img);
+    clusterer.computeCluster(30);
   }
 
 }
